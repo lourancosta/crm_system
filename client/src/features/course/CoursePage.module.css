@@ -1,0 +1,39 @@
+.title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.soon-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--link) 14%, var(--surface));
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+
+.soon-panel {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 40px;
+}
+
+.soon-icon {
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.soon-description {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 560px;
+}

@@ -1,0 +1,111 @@
+.row-actions-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.row-actions-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.row-actions-trigger:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+}
+
+.row-actions-trigger--label {
+  width: auto;
+  height: auto;
+  padding: 6px 10px;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--link);
+}
+
+/* Link style, matching the record-association name links (.link in
+   index.css) — no background change on hover, just an underline. */
+.row-actions-trigger--label:hover {
+  background: none;
+  color: var(--link);
+}
+
+.row-actions-trigger--label:hover .row-actions-trigger-label-text {
+  text-decoration: underline;
+}
+
+.row-actions-dropdown {
+  position: fixed;
+  z-index: 1000;
+  min-width: 190px;
+  background: var(--surface);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.row-actions-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 20px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.row-actions-item svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.row-actions-item:hover {
+  background: var(--hover-bg);
+}
+
+.row-actions-item--danger {
+  color: var(--danger);
+}
+
+.row-actions-item--danger svg {
+  color: var(--danger);
+}
+
+.row-actions-item:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.row-actions-item--danger:disabled,
+.row-actions-item--danger:disabled svg {
+  color: var(--text-muted);
+}
+
+.row-actions-item:disabled:hover {
+  background: none;
+}
+
+.row-actions-header {
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}

@@ -1,0 +1,31 @@
+.picker-toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.picker-toolbar .search-input {
+  flex: 1;
+}
+
+.added-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--primary-hover);
+  background: var(--primary-subtle);
+  border-radius: 10px;
+  padding: 2px 8px;
+}
+
+.add-confirmation {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--primary-hover);
+  background: var(--primary-subtle);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  margin-bottom: 16px;
+}

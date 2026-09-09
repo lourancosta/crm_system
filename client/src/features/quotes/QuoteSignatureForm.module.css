@@ -1,0 +1,130 @@
+.sig-card {
+  max-width: 860px;
+  margin: 24px auto 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  padding: 28px 36px;
+}
+
+.sig-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px;
+}
+
+.sig-subtitle {
+  font-size: 13px;
+  color: #666;
+  margin: 0 0 20px;
+}
+
+.sig-canvas-wrap {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.sig-canvas {
+  display: block;
+  width: 100%;
+  height: 160px;
+  cursor: crosshair;
+}
+
+.sig-clear-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.sig-agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.sig-agree input {
+  margin-top: 2px;
+}
+
+.sig-submit-btn {
+  background: var(--primary, #1a5c34);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.sig-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.sig-error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.sig-confirmation {
+  max-width: 860px;
+  margin: 24px auto 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px 36px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #1a5c34;
+  font-size: 14px;
+}
+
+.sig-list-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 13px;
+}
+
+.sig-list-row:last-child {
+  border-bottom: none;
+}
+
+.sig-list-status {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sig-list-status--signed {
+  color: #1a5c34;
+}
+
+.sig-list-status--pending {
+  color: #999;
+}
+
+@media print {
+  .sig-card,
+  .sig-confirmation {
+    display: none !important;
+  }
+}

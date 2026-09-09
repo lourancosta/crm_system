@@ -1,0 +1,41 @@
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 28px;
+  padding: 3px;
+  border: 2px solid var(--primary-hover);
+  border-radius: 999px;
+  background: var(--surface);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.toggle-switch:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggle-switch-knob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: var(--primary-hover);
+  transition: transform 0.2s, background 0.2s;
+}
+
+.toggle-switch--checked {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.toggle-switch--checked .toggle-switch-knob {
+  transform: translateX(24px);
+  background: #fff;
+}

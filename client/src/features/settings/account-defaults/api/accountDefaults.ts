@@ -1,0 +1,28 @@
+import { get, put } from '../../../../shared/api/client';
+
+export type AccountDefaults = {
+  companyName: string | null;
+  companyDomain: string | null;
+  address: string | null;
+  address2: string | null;
+  city: string | null;
+  state: string | null;
+  zip: string | null;
+  country: string | null;
+  bankName: string | null;
+  bankRoutingNumber: string | null;
+  bankSwiftCode: string | null;
+  bankAccountNumber: string | null;
+  billingContactEmail: string | null;
+  bankAddress: string | null;
+  bankAddress2: string | null;
+  bankCity: string | null;
+  bankState: string | null;
+  bankZip: string | null;
+  bankCountry: string | null;
+};
+
+export const accountDefaultsApi = {
+  get: () => get<AccountDefaults>('/account-defaults'),
+  update: (data: AccountDefaults) => put<AccountDefaults>('/account-defaults', data),
+};

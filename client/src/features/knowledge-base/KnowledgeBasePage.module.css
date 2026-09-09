@@ -1,0 +1,125 @@
+.kb-content--home {
+  margin-top: -40px;
+  padding-top: 0;
+}
+
+.kb-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 560px;
+  padding: 12px 16px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  color: var(--text-muted);
+}
+
+.kb-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: var(--text);
+  background: none;
+}
+
+.kb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.kb-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+}
+
+.kb-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.kb-card-image {
+  height: 120px;
+  background-color: var(--bg);
+  background-size: cover;
+  background-position: center;
+}
+
+.kb-card-body {
+  padding: 16px;
+}
+
+.kb-card-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.kb-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.kb-search-results {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.kb-search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.kb-search-result-item:last-child {
+  border-bottom: none;
+}
+
+.kb-search-result-item:hover {
+  background: var(--hover-bg);
+}
+
+.kb-search-result-item svg {
+  flex-shrink: 0;
+  color: var(--link);
+}
+
+.kb-search-result-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.kb-search-result-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.kb-search-result-breadcrumb {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}

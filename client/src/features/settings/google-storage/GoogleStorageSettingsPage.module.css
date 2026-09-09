@@ -1,0 +1,9 @@
+.save-success {
+  font-size: 13px;
+  color: var(--primary);
+}
+
+.save-error {
+  font-size: 13px;
+  color: var(--danger);
+}

@@ -1,0 +1,4 @@
+include:
+ - project: 'pipeline-2.0/repo-default'
+   ref: 'crm-system-dockerfile'
+   file: '.gitlab-ci.yml'

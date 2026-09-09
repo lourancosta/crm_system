@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "mysql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1785900029451,
+      "tag": "0000_clear_wither",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1786146087910,
+      "tag": "0001_add_engagement_activity_sync",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1788921562210,
+      "tag": "0002_happy_vampiro",
+      "breakpoints": true
+    }
+  ]
+}

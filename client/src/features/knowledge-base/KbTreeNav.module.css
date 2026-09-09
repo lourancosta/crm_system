@@ -1,0 +1,81 @@
+.kb-tree {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 40px 16px 64px 0;
+  border-right: 1px solid var(--border);
+}
+
+.kb-tree-category {
+  margin-bottom: 2px;
+}
+
+.kb-tree-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.kb-tree-label {
+  flex: 1;
+  padding: 7px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--link);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.kb-tree-label:hover {
+  background: var(--hover-bg);
+}
+
+.kb-tree-label--active {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.kb-tree-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.kb-tree-toggle:hover {
+  background: var(--hover-bg);
+}
+
+.kb-tree-children {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+  margin: 2px 0 8px;
+}
+
+.kb-tree-sublabel {
+  padding: 6px 8px;
+  font-size: 13px;
+  color: var(--link);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.kb-tree-sublabel:hover {
+  background: var(--hover-bg);
+}
+
+@media (max-width: 900px) {
+  .kb-tree {
+    display: none;
+  }
+}

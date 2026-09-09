@@ -1,0 +1,52 @@
+{
+  "name": "crm-system",
+  "version": "1.0.0",
+  "description": "CRM System using Node.js, Express, TypeScript, MySQL, Drizzle ORM and layered architecture.",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc && npm run client:build",
+    "test": "node --import tsx --test src/middlewares/errorHandler.test.ts src/modules/contacts/contact.schema.test.ts src/db/connection.test.ts src/modules/notifications/invoiceReminder.service.test.ts src/modules/supportInbox/inboundEmail.service.test.ts src/lib/microsoftOAuth.test.ts src/modules/emailActivity/emailActivity.service.test.ts src/modules/associations/association.service.test.ts",
+    "start": "node dist/server.js",
+    "reminders:run": "tsx src/scripts/send-invoice-reminders.ts",
+    "invoices:backfill-installments": "tsx src/scripts/backfill-invoice-installments.ts",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "client:install": "npm install --prefix client",
+    "client:dev": "npm run dev --prefix client",
+    "client:build": "npm run build --prefix client"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.21.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "csv-parse": "^7.0.1",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.38.4",
+    "express": "^4.21.2",
+    "imapflow": "^1.4.6",
+    "jsonwebtoken": "^9.0.2",
+    "mailparser": "^3.9.14",
+    "multer": "^2.2.0",
+    "node-cron": "^3.0.3",
+    "mysql2": "^3.11.5",
+    "nodemailer": "^6.9.16",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/imapflow": "^1.0.23",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/mailparser": "^3.4.6",
+    "@types/multer": "^2.2.0",
+    "@types/node": "^22.20.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "^6.4.17",
+    "drizzle-kit": "^0.30.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules
+dist
+client/dist
+client/node_modules
+.env
+.git
+.gitignore
+.claude/settings.local.json
+.DS_Store

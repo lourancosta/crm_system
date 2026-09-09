@@ -1,0 +1,100 @@
+.topbar {
+  flex-shrink: 0;
+  height: 56px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  /* No left padding — the search field's left edge lines up with
+     main-content's own left border (Layout.module.css's .main-content has
+     no left margin either, so both start flush at x:0 of .content-area). */
+  padding: 0 24px 0 0;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.settings-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: var(--bg);
+  transition: background 0.15s;
+}
+
+.settings-icon-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Specificity has to beat RowActionsMenu's own base `.row-actions-trigger--label`
+   (link-colored) rule so the trigger stays readable on the dark top bar. */
+.topbar .user-menu-trigger {
+  color: var(--bg);
+}
+
+.topbar .user-menu-trigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--bg);
+}
+
+.user-menu-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 4px 20px 12px;
+}
+
+.user-menu-avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  overflow: hidden;
+}
+
+.user-menu-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-menu-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-menu-fullname {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.user-menu-email {
+  font-size: 13px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-menu-profile-link {
+  font-size: 13px;
+  color: var(--link);
+  text-decoration: underline;
+  margin-top: 4px;
+}

@@ -1,0 +1,64 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 1.5px 4.5px rgba(0, 0, 0, 0.12);
+}
+
+.card--disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.card--disabled:hover {
+  border-color: var(--border);
+  box-shadow: none;
+}
+
+.cardIcon {
+  color: var(--primary);
+}
+
+.cardTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cardDescription {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.soon-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--link) 14%, var(--surface));
+  border-radius: 999px;
+  padding: 3px 9px;
+}

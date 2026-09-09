@@ -1,0 +1,54 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  /* Fills SlideOverPanel's own .body (flex:1, so it always has a definite
+     height) so only .fields scrolls internally — .title/.footer stay pinned
+     in place. height: 100% (rather than a calc(100vh - Npx) guess) tracks
+     .body's real content-box height exactly, however its padding changes. */
+  height: 100%;
+  /* Panel background is white (see CreateSlideOver.tsx); fields need to read
+     as visibly grey against it, so override the shared --input-bg token
+     (normally #f9fafb, barely visible on white) just within this panel
+     rather than site-wide. */
+  --input-bg: #eef1f4;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  /* Every field stacked one-per-row, full width — never side-by-side. */
+  gap: 16px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.fields > * {
+  /* Flex items shrink to fit their container by default, which — combined
+     with .fields' bounded height — was silently squeezing every field
+     (and clipping AssociationPicker's card content, since it has its own
+     overflow: hidden) instead of letting .fields overflow and scroll.
+     Fields must always render at their natural height; .fields is what
+     scrolls, never they. */
+  flex-shrink: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}

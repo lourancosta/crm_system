@@ -1,0 +1,14 @@
+services:
+  api:
+    image: registry.example.com/crm-system:latest
+    container_name: crm-system-api
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+    networks:
+      - crm_default
+
+networks:
+  crm_default:
+    external: true

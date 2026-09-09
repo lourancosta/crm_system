@@ -1,0 +1,491 @@
+.table-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+
+.table-input:focus {
+  border-color: var(--primary);
+}
+
+.term-input {
+  padding-left: 16px;
+  padding-right: 24px;
+}
+
+.term-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.term-input--invalid {
+  border-color: var(--danger);
+}
+
+.term-warning {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+}
+
+.term-warning-icon {
+  color: var(--danger);
+}
+
+/* Portal-rendered into document.body (see TermWarningIndicator) so it
+   escapes the table's own scroll/overflow clipping — position: fixed with
+   coordinates from useDropdownPosition, not relative to this cell. */
+.term-warning-tooltip {
+  position: fixed;
+  width: 210px;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.term-warning-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+}
+
+/* Tooltip sits above the icon (room was available above it) — arrow points
+   down from the tooltip's bottom edge to the icon below. */
+.term-warning-tooltip--above::after {
+  top: 100%;
+  border-top-color: var(--primary);
+}
+
+/* Flipped: not enough room above (e.g. the table's first row, right under
+   the sticky header), so the tooltip renders below the icon instead —
+   arrow points up from the tooltip's top edge. */
+.term-warning-tooltip--below::after {
+  bottom: 100%;
+  border-bottom-color: var(--primary);
+}
+
+.header-with-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-info {
+  display: inline-flex;
+  align-items: center;
+  cursor: default;
+}
+
+.header-info-icon {
+  color: var(--text-muted);
+}
+
+/* Same portal-rendered pattern as term-warning-tooltip above — see
+   InfoTooltip in LineItemsStep.tsx. */
+.header-info-tooltip {
+  position: fixed;
+  width: 190px;
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.header-info-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+}
+
+.header-info-tooltip--above::after {
+  top: 100%;
+  border-top-color: var(--primary);
+}
+
+.header-info-tooltip--below::after {
+  bottom: 100%;
+  border-bottom-color: var(--primary);
+}
+
+/* Shared by the Billing start date and Billing frequency columns — both are
+   just a Select, sized/padded the same way in the table. */
+.line-item-select {
+  display: flex;
+  min-width: 160px;
+}
+
+.line-item-select button {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 0;
+}
+
+.row-actions-cell {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.line-items-table :global(tbody tr:hover) .row-actions-cell {
+  opacity: 1;
+}
+
+/* Pulls the Product name column closer to the drag handle — scoped to this
+   table only, not the shared Table component's default cell padding. */
+.line-items-table :global(thead th:first-child),
+.line-items-table :global(tbody td:first-child) {
+  padding-right: 6px;
+}
+
+.line-items-table :global(tbody td:nth-child(2)) {
+  padding-left: 6px;
+}
+
+.add-line-item :global(.btn) {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+  padding: 8px 16px;
+}
+
+.add-line-item :global(.btn):hover:not(:disabled) {
+  background: var(--secondary);
+  opacity: 0.9;
+}
+
+.line-items-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: var(--surface);
+}
+
+.line-items-empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.line-items-empty-description {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  margin-top: 24px;
+  margin-bottom: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: 0 1.5px 4.5px rgba(0, 0, 0, 0.12);
+}
+
+.summary-title {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--input-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row--nested {
+  padding-left: 36px;
+}
+
+.summary-row--bold .summary-label,
+.summary-row--bold .summary-value {
+  font-weight: 700;
+}
+
+.payment-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* baseline (not center) so the label, the dotted line, and the first
+   Future-payments value line all sit on the same text line — the dot's own
+   vertical position is handled separately via align-self below, since a
+   12px circle doesn't have a meaningful text baseline of its own. */
+.payment-schedule-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+/* Same footprint for both states (Due now filled, Future payments hollow) —
+   the hollow dot's border sits inside that footprint via border-box, it
+   doesn't add to it. */
+.payment-dot {
+  align-self: center;
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.payment-dot--hollow {
+  background: var(--surface);
+  border: 2px solid var(--border);
+}
+
+/* Connects this (Future payments') dot back up to the Due now dot above it —
+   anchored to this dot rather than spanning via absolute row heights, so it
+   stays correct regardless of how tall Future payments' own value list gets. */
+.payment-dot--hollow::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 30px;
+  background: var(--border);
+}
+
+.future-payment-line {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.future-payment-line strong {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Groups the "Future payments" row with any extra frequency/term lines below
+   it under a tighter gap than the one separating Due now from this whole
+   group (.payment-schedule's own gap). */
+.future-payments-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Any extra frequency/term combination beyond the first — no dot/label/
+   dotted-line of its own, just right-aligned under the first line, matching
+   the reference image. */
+.future-payment-extra-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.summary-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.summary-label--muted {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.summary-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--border);
+  margin-bottom: 4px;
+}
+
+/* Darker than the default summary-row dotted line — scoped to Due
+   now/Future payments only, per request. */
+.payment-schedule-dots {
+  border-bottom-color: var(--text-muted);
+}
+
+.summary-value {
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-value--accent {
+  color: var(--link);
+}
+
+.summary-value--bold {
+  font-weight: 700;
+}
+
+.discount-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 24px;
+  row-gap: 6px;
+  align-items: start;
+}
+
+.discount-name-block {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.discount-name-static-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.discount-name-input {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  padding: 4px 0;
+  font-size: 14px;
+  outline: none;
+  color: var(--text);
+}
+
+.discount-name-input:focus {
+  border-bottom-color: var(--primary);
+}
+
+.discount-right {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.discount-value-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  overflow: hidden;
+}
+
+.discount-kind-select button {
+  border: none;
+  border-radius: 0;
+  background: none;
+  padding: 6px 8px;
+}
+
+.discount-value-input {
+  width: 150px;
+  padding: 6px 10px;
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
+
+/* Same %/$ kind + value compound control as the global discount row above,
+   just sized for a table cell. */
+.line-item-discount-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.line-item-discount-input {
+  width: 90px;
+  padding: 6px 8px;
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
+
+.discount-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.discount-remove-btn:hover {
+  background: var(--hover-bg);
+  color: var(--danger);
+}
+
+.discount-amount {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+}
+
+.add-discount-link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--link);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.add-discount-link:hover {
+  text-decoration: underline;
+}

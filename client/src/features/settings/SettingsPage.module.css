@@ -1,0 +1,75 @@
+.settings-layout {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+.settings-aside-nav {
+  border-right: 1px solid var(--border);
+  padding: 16px 0 24px;
+  overflow-y: auto;
+}
+
+.settings-aside-item {
+  display: block;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  margin: 0 8px;
+  font-weight: 400;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.settings-aside-item:hover {
+  background: var(--border);
+  color: var(--text);
+}
+
+.settings-aside-item--active {
+  background: var(--selected-bg);
+  color: var(--text);
+  font-weight: 600;
+  margin-left: 0;
+  padding-left: 13px;
+  border-left: 3px solid var(--link);
+  border-radius: 0 6px 6px 0;
+}
+
+/* Category block (e.g. "Account Management") — margin-top is the gap from
+   whatever section came before it, matching HubSpot's settings nav. */
+.settings-aside-group {
+  margin: 24px 0 12px;
+}
+
+.settings-aside-group:first-child {
+  margin-top: 0;
+}
+
+.settings-aside-group-label {
+  padding: 0 16px 6px;
+  margin: 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.settings-main {
+  padding: 0 0 24px 32px;
+  overflow-y: auto;
+  min-width: 0;
+  /* display:flex + min-height:0 (not just block) so a child using the
+     shared .page pattern (flex:1; min-height:0) gets a real bounded height
+     to fill — letting Table's own internal scroll take over instead of this
+     whole panel scrolling as one block. overflow-y:auto stays as a fallback
+     for pages that don't opt into that pattern (plain content just grows
+     and this panel scrolls exactly as before). */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}

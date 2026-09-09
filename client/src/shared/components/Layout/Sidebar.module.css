@@ -1,0 +1,182 @@
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.15s;
+}
+
+.sidebar--collapsed {
+  width: var(--sidebar-width-collapsed);
+}
+
+.sidebar-toggle-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.sidebar-toggle-row--collapsed {
+  justify-content: center;
+}
+
+.sidebar-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+  padding: 0;
+}
+
+.sidebar-toggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* Fixed height + flex centering so the brand row is the same height
+   collapsed or expanded — the logo image swaps height (34px vs 40px)
+   between states, and if the row's height just followed the image's
+   natural size, the nav below would shift down by a few px whenever
+   the sidebar expands. */
+.sidebar-brand {
+  height: 62px;
+  padding: 0 12px 0 16px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-brand-logo {
+  display: block;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.sidebar-brand-logo--expanded {
+  font-size: 20px;
+  margin-left: -7px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: normal;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.sidebar-link svg {
+  flex-shrink: 0;
+}
+
+/* Icon-only: same left padding as the expanded row (so the icon never
+   moves), just shrunk to fit-content width instead of stretching full-width
+   with dead space where the label would've been. */
+.sidebar-link--collapsed {
+  width: 46px;
+  gap: 0;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.sidebar-link--active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.sidebar-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 16px;
+}
+
+.sidebar-flyout {
+  position: fixed;
+  z-index: 150;
+  min-width: 180px;
+  background: var(--primary-hover);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-flyout-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 4px 8px 6px;
+}
+
+.sidebar-flyout-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.sidebar-flyout-badge {
+  flex-shrink: 0;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 2px 7px;
+}
+
+.sidebar-flyout-link:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.sidebar-flyout-link--active {
+  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+}

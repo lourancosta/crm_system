@@ -1,0 +1,14 @@
+/* Kebab action button only shows on row hover — tr/td belong to the shared
+   Table component, but plain tag selectors aren't module-scoped, so this
+   still matches regardless of which component rendered the row. Same
+   pattern as CreateInvoiceForm.module.css / LineItemsStep.module.css's line
+   item name column. */
+.row-actions-cell {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.properties-table :global(tbody tr:hover) .row-actions-cell,
+.groups-table :global(tbody tr:hover) .row-actions-cell {
+  opacity: 1;
+}

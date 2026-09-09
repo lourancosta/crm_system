@@ -1,0 +1,26 @@
+.text-truncated {
+  position: relative;
+  cursor: default;
+}
+
+.text-truncated::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 0;
+  background: #1f2937;
+  color: #f9fafb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s;
+  z-index: 200;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.text-truncated:hover::after {
+  opacity: 1;
+}

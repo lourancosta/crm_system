@@ -1,0 +1,37 @@
+.text {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.fade {
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.fade::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  background: linear-gradient(to bottom, transparent, var(--surface));
+  pointer-events: none;
+}
+
+.toggle {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 0;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--link);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}

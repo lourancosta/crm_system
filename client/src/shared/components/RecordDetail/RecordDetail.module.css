@@ -1,0 +1,271 @@
+.record-detail {
+  max-width: 720px;
+}
+
+.record-detail--wide {
+  max-width: none;
+}
+
+.record-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 24px;
+  align-items: stretch;
+  height: calc(100vh - 88px);
+}
+
+.record-layout--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.record-main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+}
+
+.record-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  max-height: calc(100vh - 88px);
+  overflow-y: auto;
+}
+
+.record-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.record-back:hover {
+  color: var(--text);
+}
+
+.record-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+}
+
+.record-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.record-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.record-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.record-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-panel-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding-bottom: 12px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.record-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+
+.record-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.record-field-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+/* Fills .tab-panel's full height so the toolbar below sits outside the
+   scrolling flow entirely (not just sticky-within-it, which still shifts a
+   few pixels before locking) — only .activity-scroll underneath it scrolls. */
+.activity-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.activity-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.activity-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 12px;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 10px;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--primary-hover);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.timeline-line {
+  flex: 1;
+  width: 2px;
+  background: var(--border);
+  margin-top: 4px;
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 24px;
+}
+
+.timeline-item:last-child .timeline-content {
+  padding-bottom: 0;
+}
+
+.timeline-balloon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.timeline-balloon-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.timeline-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.timeline-author {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.timeline-date-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding-left: 12px;
+  border-left: 1px solid var(--border);
+}
+
+.timeline-date {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.timeline-body {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.timeline-load-more {
+  padding: 12px 0 4px 40px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.record-field-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+

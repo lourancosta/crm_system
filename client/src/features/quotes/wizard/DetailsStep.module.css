@@ -1,0 +1,36 @@
+.details-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* The card fills this wrapper's full height, so without this padding its
+     left/right/bottom edges sit flush against the step column's own
+     overflow-y: auto — which then clips the card's own box-shadow on those
+     sides (unlike Deal/Buyer/Your Info's cards, which have natural
+     whitespace around them and never touch that clipping edge). */
+  box-sizing: border-box;
+  padding: 0 4px 8px;
+}
+
+.details-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.details-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 20px;
+}
+
+/* Quote name / Expiration date stay their natural height; only the two
+   rich-text fields below them grow to fill whatever's left. */
+.details-textarea-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}

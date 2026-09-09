@@ -1,0 +1,33 @@
+.settings-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.settings-card--danger {
+  border-color: #fca5a5;
+}
+
+.settings-card--shadow {
+  box-shadow: 0 1.5px 4.5px rgba(0, 0, 0, 0.12);
+}
+
+.settings-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding: 12px 20px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-card-title--input {
+  background: var(--input-bg);
+}
+
+.settings-card-body {
+  padding: 16px 20px;
+}

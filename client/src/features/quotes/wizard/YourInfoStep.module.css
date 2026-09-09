@@ -1,0 +1,24 @@
+.sender-avatar {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--link) 12%, var(--surface));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 24px;
+  color: var(--text-muted);
+}
+
+.sender-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sender-name {
+  font-weight: 700;
+  color: var(--link);
+}

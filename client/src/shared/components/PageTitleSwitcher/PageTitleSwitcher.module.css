@@ -1,0 +1,71 @@
+.title-switcher {
+  position: relative;
+  display: inline-block;
+}
+
+.title-switcher-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.title-switcher-trigger h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--link);
+}
+
+.title-switcher-chevron {
+  color: var(--link);
+  flex-shrink: 0;
+}
+
+.title-switcher-menu {
+  position: fixed;
+  z-index: 1000;
+  min-width: 200px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-switcher-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.title-switcher-option svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+.title-switcher-option:hover {
+  background: var(--hover-bg);
+}
+
+.title-switcher-option--active {
+  color: var(--link);
+  font-weight: 600;
+}

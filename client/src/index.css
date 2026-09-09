@@ -1,0 +1,424 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  /* Dedicated to input-like fields (text inputs, selects, search boxes,
+     the "picked value" chip on search-selects) so every field across the
+     app reads as visually distinct from the white page/surface background
+     around it — kept as its own token rather than reusing --bg/--surface. */
+  --input-bg: #f9fafb;
+  /* Hover/active highlight for rows, menu items, and buttons — kept as its
+     own token (same shade --bg used to be) so that feedback doesn't vanish
+     now that --bg is white and equal to --surface. */
+  --hover-bg: #f9fafb;
+  /* "Selected" highlight (e.g. the active settings-nav item) — a light tint
+     of --link, reused wherever the same "currently selected/highlighted"
+     treatment is needed. */
+  --selected-bg: color-mix(in srgb, var(--link) 14%, var(--surface));
+  --border: #e5e7eb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --primary: #042d37;
+  --primary-hover: #1e5e6c;
+  --primary-subtle: #dcfce7;
+  --secondary: #ea772d;
+  --secondary-hover: color-mix(in srgb, var(--secondary) 80%, black);
+  --link: #0fa3b6;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --sidebar-width: 210px;
+  --sidebar-width-collapsed: 72px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── Page ──────────────────────────────────────────────── */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ── Buttons ───────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--hover-bg);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--danger-hover);
+}
+
+/* Orange accent button - Save inside fullscreen modals (see Modal.module.css
+   .modal-header--fullscreen, whose --primary-hover background matches the
+   default .btn-primary, so Save needs a distinct color to stay visible
+   against it) and "+ New <record>" buttons on record list pages. */
+.btn-accent {
+  background: var(--secondary);
+  color: #fff;
+  border-color: var(--secondary);
+}
+
+.btn-accent:hover:not(:disabled) {
+  background: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 8px;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--hover-bg);
+  color: var(--text);
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* ── Forms ─────────────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.15s;
+  background: var(--input-bg);
+  color: var(--text);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--primary);
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+/* ── Alerts ────────────────────────────────────────────── */
+
+.alert {
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.alert-error {
+  background: #fef2f2;
+  color: var(--danger);
+  border: 1px solid #fecaca;
+}
+
+.alert-warning {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.alert-success {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* ── States ────────────────────────────────────────────── */
+
+.loading,
+.empty {
+  text-align: center;
+  padding: 48px;
+  color: var(--text-muted);
+}
+
+.link {
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.line-item-tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.detail-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+.detail-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    border-color 0.15s;
+}
+
+.detail-tab:hover {
+  color: var(--text);
+}
+
+.detail-tab--active {
+  color: var(--primary-hover);
+  border-bottom-color: var(--primary-hover);
+  font-weight: 600;
+}
+
+.tab-panel-section {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-panel-section:last-child {
+  border-bottom: none;
+}
+
+/* ── Table toolbar ─────────────────────────────────────── */
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.search-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  width: 280px;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+}
+
+/* ── Status badge ──────────────────────────────────────── */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.settings-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* ── Article editor (Knowledge base) ──────────────────────── */
+/* .kb-callout / .kb-video-embed are intentionally NOT CSS-modules-scoped:
+   they're injected as raw HTML strings via document.execCommand and
+   persisted into article content rendered elsewhere (the public article
+   page) via dangerouslySetInnerHTML, so they need permanent, stable,
+   global class names rather than a build-time-hashed one. */
+
+.kb-callout {
+  display: flex;
+  gap: 8px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  background: var(--primary-subtle);
+  border-left: 3px solid var(--primary-hover);
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Callout type variants - picked from the editor's "Insert callout" menu
+   (ArticleEditor.tsx's CALLOUT_TYPES). Fixed colors rather than theme vars,
+   since each type's identity IS its color. */
+.kb-callout--tip {
+  background: rgba(111, 184, 201, 0.16);
+  border-left-color: #6fb8c9;
+}
+
+.kb-callout--note {
+  background: rgba(111, 205, 168, 0.16);
+  border-left-color: #6fcda8;
+}
+
+.kb-callout--caution {
+  background: rgba(239, 166, 163, 0.18);
+  border-left-color: #efa6a3;
+}
+
+.kb-callout--warning {
+  background: rgba(217, 124, 79, 0.16);
+  border-left-color: #d97c4f;
+}
+
+.kb-video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  margin: 12px 0;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #000;
+}
+
+.kb-video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}

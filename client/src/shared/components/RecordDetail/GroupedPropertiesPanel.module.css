@@ -1,0 +1,157 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+/* Narrower than the shared .search-input's default 280px — this panel's
+   toolbar also carries the Manage properties link, Hide blank checkbox, and
+   Edit button on the same row, and the single-column RecordDetail layout
+   (objects with no aside, e.g. Products) caps out around 680px, too tight
+   for all of them at the default width without wrapping Edit onto its own
+   line. */
+.toolbarSearch {
+  width: 200px;
+}
+
+.hideBlankLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.manageLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Pushes the Edit/Save/Cancel buttons to the toolbar's far right without
+   disturbing the search input's natural width (flex:1 would stretch it). */
+.toolbarSpacer {
+  flex: 1;
+}
+
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.group {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.groupHeader {
+  all: unset;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  cursor: pointer;
+  background: var(--bg);
+}
+
+.groupHeader:hover {
+  background: var(--hover-bg);
+}
+
+/* Same rotating-glyph collapse affordance as AssociationPanel
+   (AssociatedRecordsPanel.module.css's .aside-panel-arrow), reimplemented
+   here rather than shared — that module's body has a 270px scroll cap sized
+   for narrow association lists, wrong fit for a full-width field grid. */
+.groupArrow {
+  font-size: 14px;
+  line-height: 1;
+  color: var(--primary);
+  transform: rotate(90deg);
+  transition: transform 0.15s;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.groupArrowClosed {
+  transform: rotate(0deg);
+}
+
+.groupLabel {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.groupCount {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.groupBody {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+
+/* Same 2-column field grid as RecordDetail.module.css's
+   .record-fields/.record-field/.record-field-label/.record-field-value —
+   duplicated (not cross-imported) to keep this component self-contained. */
+.fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.fieldLabel {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.fieldValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  overflow-wrap: break-word;
+}
+
+/* Edit-mode inputs — sized to sit in the same field slot .fieldValue
+   occupies, not this app's full form-field styling (no label/margin
+   baggage, this grid already provides that via .field/.fieldLabel). */
+.editInput {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--input-bg);
+  color: var(--text);
+}
+
+.editInput:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+.editCheckbox {
+  width: 16px;
+  height: 16px;
+  margin: 4px 0 0;
+}

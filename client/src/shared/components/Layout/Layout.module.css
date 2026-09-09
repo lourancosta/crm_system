@@ -1,0 +1,26 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.content-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--primary);
+}
+
+.main-content {
+  flex: 1;
+  padding: 16px 20px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border-top-left-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

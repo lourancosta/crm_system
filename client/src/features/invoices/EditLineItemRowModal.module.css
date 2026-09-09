@@ -1,0 +1,34 @@
+.discount-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  overflow: hidden;
+}
+
+/* See EditQuoteLineItemModal.module.css's identical rule for why this needs
+   a fixed width instead of growing with the ambient .form-group rule. */
+.discount-kind-select {
+  flex: 0 0 64px;
+}
+
+.discount-kind-select button {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  background: none;
+  padding: 8px 10px;
+  justify-content: center;
+}
+
+.discount-value-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 14px;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}

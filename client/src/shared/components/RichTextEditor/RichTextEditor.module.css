@@ -1,0 +1,70 @@
+.rich-editor {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.rich-editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.rich-editor-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.rich-editor-btn:hover {
+  background: var(--border);
+}
+
+.rich-editor-btn-divider {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+  margin: 0 4px;
+}
+
+.rich-editor-body {
+  min-height: 320px;
+  max-height: 640px;
+  overflow-y: auto;
+  padding: 16px 18px;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
+}
+
+.rich-editor-body:empty::before {
+  content: attr(data-placeholder);
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.rich-editor-body p {
+  margin-bottom: 12px;
+}
+
+.rich-editor-body ul {
+  margin: 0 0 12px 20px;
+}
+
+.rich-editor-body img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 8px 0;
+}

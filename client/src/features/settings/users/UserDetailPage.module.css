@@ -1,0 +1,28 @@
+.settings-danger-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.settings-danger-label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.settings-danger-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.save-success {
+  font-size: 13px;
+  color: var(--primary);
+}
+
+.save-error {
+  font-size: 13px;
+  color: var(--danger);
+}

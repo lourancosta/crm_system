@@ -1,0 +1,76 @@
+.kb-page {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.kb-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 56px 24px 72px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.kb-hero h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.kb-hero-logo {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.kb-hero--compact {
+  align-items: flex-start;
+  text-align: left;
+  padding: 32px 24px 40px;
+  gap: 10px;
+}
+
+.kb-hero--compact h1 {
+  font-size: 24px;
+}
+
+.kb-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.kb-back-link:hover {
+  color: #fff;
+}
+
+.kb-content {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+  position: relative;
+}
+
+/* Category/article pages only - pairs the tree sidebar with .kb-content.
+   The home page keeps plain .kb-content (no wrap, no tree). */
+.kb-content-wrap {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.kb-content-wrap .kb-content {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 40px 0 64px 32px;
+}

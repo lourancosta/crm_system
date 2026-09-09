@@ -1,0 +1,52 @@
+.articles-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.title-cell {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.title-cell-name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+/* Only visible on row hover - element selector (tr) isn't scoped by CSS
+   modules, so this reaches the shared Table component's row markup. */
+.row-actions {
+  opacity: 0;
+  transition: opacity 0.1s;
+  flex-shrink: 0;
+}
+
+tr:hover .row-actions {
+  opacity: 1;
+}
+
+/* Selector repeats the class to out-specificity RowActionsMenu's own
+   .row-actions-trigger--label rule regardless of CSS module load order -
+   that variant is styled as a plain text link, not the bordered
+   "Actions ▾" button this page needs. */
+.actions-trigger.actions-trigger {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 10px 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.actions-trigger.actions-trigger:hover {
+  background: var(--hover-bg);
+  color: var(--text);
+}

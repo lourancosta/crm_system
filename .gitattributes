@@ -1,0 +1,8 @@
+# O config.conf e lido com `source` dentro do runner Linux. Com quebra CRLF o bash
+# interpreta o  como um COMANDO: a primeira linha vira `VAR=valor <comando>`, que
+# define a variavel apenas para aquele comando e nao no shell (foi assim que o
+# APPLICATION_NAME sumiu), e as demais variaveis ficam com  grudado no valor --
+# o que quebrou o YAML renderizado pelo Helm no bloco do probe.
+* text=auto eol=lf
+*.conf text eol=lf
+*.sh    text eol=lf

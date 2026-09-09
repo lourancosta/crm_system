@@ -1,0 +1,291 @@
+.fullscreen-form {
+  height: 100%;
+  overflow-y: auto;
+  padding: 32px 40px;
+}
+
+.table-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  outline: none;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color 0.15s;
+}
+
+.table-input:focus {
+  border-color: var(--primary);
+}
+
+/* Kebab action button only shows on row hover — tr/td belong to the shared
+   Table component, but plain tag selectors aren't module-scoped, so this
+   still matches regardless of which component rendered the row. */
+.row-actions-cell {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.line-items-table :global(tbody tr:hover) .row-actions-cell {
+  opacity: 1;
+}
+
+/* "+ Add line item" uses the --secondary root token — Button.tsx doesn't
+   merge a passed-in className with its own variant/size classes (it
+   overwrites them), so this targets the rendered button through a wrapper
+   instead of touching the shared Button component. */
+.add-line-item :global(.btn) {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+  padding: 8px 16px;
+}
+
+.add-line-item :global(.btn):hover:not(:disabled) {
+  background: var(--secondary);
+  opacity: 0.9;
+}
+
+.line-items-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: var(--surface);
+}
+
+.line-items-empty-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.line-items-empty-description {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  margin-top: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: 0 1.5px 4.5px rgba(0, 0, 0, 0.12);
+  /* The form is display:flex/column, and this card's own overflow:hidden
+     (needed so its border-radius clips the last row's corners) gives it an
+     automatic flex min-height of 0 per the flexbox spec - without
+     flex-shrink:0, the flex algorithm crushes it down to ~2px whenever the
+     form's content is taller than its visible box, instead of letting the
+     form's own overflow-y:auto scroll to it at full height. */
+  flex-shrink: 0;
+}
+
+.summary-title {
+  padding: 16px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.summary-row:last-child {
+  border-bottom: none;
+}
+
+.summary-row--nested {
+  padding-left: 36px;
+}
+
+.summary-row--bold .summary-label,
+.summary-row--bold .summary-value {
+  font-weight: 700;
+}
+
+.summary-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.summary-label--muted {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.summary-dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--border);
+  margin-bottom: 4px;
+}
+
+.summary-value {
+  font-size: 14px;
+  color: var(--text);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-value--accent {
+  color: var(--link);
+}
+
+/* Two rows x two columns: the name block spans both rows on the left; the
+   value-group+trash sits top-right, the computed amount bottom-right under
+   it - matches the reference layout (label+underlined name field on the
+   left, %/value control above the negative amount on the right). */
+.discount-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 24px;
+  row-gap: 6px;
+  align-items: start;
+}
+
+.discount-name-block {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  padding-top: 2px;
+}
+
+.discount-name-static-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.discount-name-input {
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  padding: 4px 0;
+  font-size: 14px;
+  outline: none;
+  color: var(--text);
+}
+
+.discount-name-input:focus {
+  border-bottom-color: var(--primary);
+}
+
+.discount-right {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.discount-value-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  overflow: hidden;
+}
+
+/* Targets Select's own trigger <button> through the className it merges
+   onto its outer wrapper (see Select.tsx) - plain element selectors aren't
+   scoped by CSS modules, so this reaches inside without touching Select's
+   own stylesheet. Strips its border so it reads as one connected control
+   with the value input instead of two separate boxes. */
+.discount-kind-select button {
+  border: none;
+  border-radius: 0;
+  background: none;
+  padding: 6px 8px;
+}
+
+.discount-value-input {
+  width: 150px;
+  padding: 6px 10px;
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
+
+/* Same %/$ kind + value compound control as the global discount row above,
+   just sized for a table cell. */
+.line-item-discount-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  overflow: hidden;
+  width: fit-content;
+}
+
+.line-item-discount-input {
+  width: 90px;
+  padding: 6px 8px;
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
+
+.discount-remove-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.discount-remove-btn:hover {
+  background: var(--hover-bg);
+  color: var(--danger);
+}
+
+.discount-amount {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+}
+
+.add-discount-link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--link);
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.add-discount-link:hover {
+  text-decoration: underline;
+}

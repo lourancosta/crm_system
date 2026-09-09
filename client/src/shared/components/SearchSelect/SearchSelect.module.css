@@ -1,0 +1,69 @@
+.invoice-search {
+  position: relative;
+}
+
+.invoice-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.invoice-search input:focus {
+  border-color: var(--primary);
+}
+
+.invoice-search-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  font-size: 14px;
+}
+
+.invoice-search-dropdown {
+  position: fixed;
+  z-index: 1000;
+  max-height: 220px;
+  overflow-y: auto;
+  background: var(--surface);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.invoice-search-option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.invoice-search-option:hover {
+  background: var(--hover-bg);
+}
+
+.invoice-search-option-meta {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.invoice-search-empty {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+}

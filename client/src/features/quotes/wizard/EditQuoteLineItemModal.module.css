@@ -1,0 +1,52 @@
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.checkbox-row input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.discount-group {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input-bg);
+  overflow: hidden;
+}
+
+/* Fixed width, not flex-grow — Select's own .custom-select-trigger picks up
+   width:100% from the ambient `.form-group` rule, which would otherwise let
+   it expand to match/exceed the numeric input next to it. The kind toggle
+   only ever shows "%" or "$", so it needs a small fixed width; the numeric
+   input (flex: 1 below) should get the rest of the row. */
+.discount-kind-select {
+  flex: 0 0 64px;
+}
+
+.discount-kind-select button {
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  background: none;
+  padding: 8px 10px;
+  justify-content: center;
+}
+
+.discount-value-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-left: 1px solid var(--border);
+  font-size: 14px;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+}
